@@ -1,4 +1,4 @@
-package com.icaras84.beziertestvisualizer.core.math;
+package com.icaras84.beziertestvisualizer.core.math.curve;
 
 import com.icaras84.beziertestvisualizer.utils.Copyable;
 
