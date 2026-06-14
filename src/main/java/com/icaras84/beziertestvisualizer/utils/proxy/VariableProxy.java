@@ -2,6 +2,7 @@ package com.icaras84.beziertestvisualizer.utils.proxy;
 
 import com.icaras84.beziertestvisualizer.utils.Publisher;
 
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -19,6 +20,6 @@ public interface VariableProxy<T> {
     }
 
     default void updateExcept(Consumer<T> source){
-        getPublisher().updateExcept(get(), source);
+        getPublisher().updateExcept(get(), List.of(source));
     }
 }
