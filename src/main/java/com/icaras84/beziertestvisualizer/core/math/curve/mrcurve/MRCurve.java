@@ -70,63 +70,53 @@ public class MRCurve implements Curve {
     public double getCurvature(double t) {
         Complex vel = this.getTangent(t);
         Complex accel = this.getTangentGradient(t);
-        return 0;
+        double numerator = vel.getReal() * accel.getImag() -  vel.getImag() * accel.getReal();
+        if (numerator == 0.0) {
+            return 0.0;
+        }
+        double denominator = vel.length();
+        return numerator / (denominator * denominator * denominator);
+    }
+
+    private double curvature(double vx, double vy, double ax, double ay) {
+        double numerator = vx * ay - vy * ax;
+        if (numerator == 0.0) {
+            return 0.0;
+        }
+        double denominator = Math.hypot(vx, vy);
+        return numerator / (denominator * denominator * denominator);
     }
 
     @Override
-    public Complex[] getPositions(double[] tValues) {
+    public DMatrixRMaj getPositions(double[] tValues) {
         DMatrixRMaj output = new DMatrixRMaj();
         CommonOps_DDRM.mult(this.polynomialMatrix.getTMatrix(0, tValues), this.premultipliedBasisAndControl(), output);
-        Complex[] outArray = new Complex[tValues.length];
-
-        for (int i = 0; i < tValues.length; i++) {
-            outArray[i] = new Complex(output.get(i, 0), output.get(i, 1));
-        }
-
-        return outArray;
+        return output;
     }
 
     @Override
-    public Complex[] getTangents(double[] tValues) {
+    public DMatrixRMaj getTangents(double[] tValues) {
         DMatrixRMaj output = new DMatrixRMaj();
         CommonOps_DDRM.mult(this.polynomialMatrix.getTMatrix(1, tValues), this.premultipliedBasisAndControl(), output);
-        Complex[] outArray = new Complex[tValues.length];
-
-        for (int i = 0; i < tValues.length; i++) {
-            outArray[i] = new Complex(output.get(i, 0), output.get(i, 1));
-        }
-
-        return outArray;
+        return output;
     }
 
     @Override
-    public Complex[] getTangentGradients(double[] tValues) {
+    public DMatrixRMaj getTangentGradients(double[] tValues) {
         DMatrixRMaj output = new DMatrixRMaj();
         CommonOps_DDRM.mult(this.polynomialMatrix.getTMatrix(2, tValues), this.premultipliedBasisAndControl(), output);
-        Complex[] outArray = new Complex[tValues.length];
-
-        for (int i = 0; i < tValues.length; i++) {
-            outArray[i] = new Complex(output.get(i, 0), output.get(i, 1));
-        }
-
-        return outArray;
+        return output;
     }
 
     @Override
-    public double[] getCurvatures(double[] tValues) {
-        return new double[0];
+    public DMatrixRMaj getCurvatures(double[] tValues) {
+        return new DMatrixRMaj();
     }
 
     @Override
-    public Complex[] getPointCharacteristics(double t) {
+    public DMatrixRMaj getPointCharacteristics(double t) {
         DMatrixRMaj output = new DMatrixRMaj();
         CommonOps_DDRM.mult(this.polynomialMatrix.getTMatrix(new int[]{0, 1, 2}, t), this.premultipliedBasisAndControl(), output);
-        Complex[] outArray = new Complex[3];
-
-        for (int i = 0; i < outArray.length; i++) {
-            outArray[i] = new Complex(output.get(i, 0), output.get(i, 1));
-        }
-
-        return outArray;
+        return output;
     }
 }
