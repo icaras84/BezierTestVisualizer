@@ -110,7 +110,18 @@ public class MRCurve implements Curve {
 
     @Override
     public DMatrixRMaj getCurvatures(double[] tValues) {
-        return new DMatrixRMaj();
+        DMatrixRMaj velocities = this.getTangents(tValues);
+        DMatrixRMaj accelerations = this.getTangentGradients(tValues);
+
+        DMatrixRMaj output = new DMatrixRMaj(tValues.length, 1);
+
+        for (int i = 0; i < tValues.length; i++) {
+            int xIdx = 2 * i;
+            int yIdx = xIdx + 1;
+            output.data[i] = curvature(velocities.data[xIdx],  velocities.data[yIdx], accelerations.data[xIdx], accelerations.data[yIdx]);
+        }
+
+        return output;
     }
 
     @Override
