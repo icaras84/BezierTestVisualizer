@@ -7,21 +7,21 @@ import org.ejml.dense.row.CommonOps_DDRM;
 
 public class MRCurve implements Curve {
 
-    private ControlParameterMatrix controlMatrix;
+    private DMatrixRMaj controlMatrix;
     private DMatrixRMaj basisMatrix;
     private PolynomialMatrix polynomialMatrix;
 
-    public MRCurve(ControlParameterMatrix controlMatrix, DMatrixRMaj basisMatrix, PolynomialMatrix polynomialMatrix) {
+    public MRCurve(DMatrixRMaj controlMatrix, DMatrixRMaj basisMatrix, PolynomialMatrix polynomialMatrix) {
         this.controlMatrix = controlMatrix;
         this.basisMatrix = basisMatrix;
         this.polynomialMatrix = polynomialMatrix;
     }
 
-    public ControlParameterMatrix getControlMatrix() {
+    public DMatrixRMaj getControlMatrix() {
         return controlMatrix;
     }
 
-    public void setControlMatrix(ControlParameterMatrix controlMatrix) {
+    public void setControlMatrix(DMatrixRMaj controlMatrix) {
         this.controlMatrix = controlMatrix;
     }
 
@@ -42,7 +42,7 @@ public class MRCurve implements Curve {
     }
 
     public DMatrixRMaj premultipliedBasisAndControl() {
-        return CommonOps_DDRM.mult(this.basisMatrix, this.controlMatrix.getControlParameterMatrix(), null);
+        return CommonOps_DDRM.mult(this.basisMatrix, this.controlMatrix, null);
     }
 
     @Override
