@@ -1,6 +1,8 @@
 package com.icaras84.beziertestvisualizer.core.math.curve.bezier;
 
 import com.icaras84.beziertestvisualizer.core.math.curve.ControlPoint;
+import com.icaras84.beziertestvisualizer.core.math.curve.mrcurve.MRCurve;
+import com.icaras84.beziertestvisualizer.core.math.curve.mrcurve.PolynomialMatrix;
 import org.ejml.data.DMatrixRMaj;
 
 import java.util.List;
@@ -43,5 +45,10 @@ public class BezierCurveSupplier {
         }
 
         return controlMatrix;
+    }
+
+    public MRCurve getCurve() {
+        int ctrlCount = controlPoints.size();
+        return new MRCurve(this.createControlPointMatrix(), BezierBases.getBezierCharacteristicMatrix(ctrlCount), new PolynomialMatrix(ctrlCount));
     }
 }
