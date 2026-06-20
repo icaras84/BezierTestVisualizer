@@ -38,7 +38,7 @@ public class TextboxWidget extends JPanel implements  Widget<String>, Consumer<S
         this.proxy.updateExcept(this);
     }
 
-    public JFormattedTextField getFormattedTextField() {
+    public JFormattedTextField getJFormattedTextField() {
         return this.formattedTextField;
     }
 

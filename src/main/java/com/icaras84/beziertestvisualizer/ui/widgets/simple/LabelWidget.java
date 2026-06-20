@@ -82,8 +82,8 @@ public class LabelWidget extends JPanel implements Widget<String>, Consumer<Stri
         this.label.setVerticalAlignment(this.verticalAlign.swingValue());
     }
 
-    public JLabel getLabel() {
-        return label;
+    public JLabel getJLabel() {
+        return this.label;
     }
 
     /**
