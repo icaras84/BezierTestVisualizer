@@ -13,13 +13,13 @@ public interface VariableProxy<T> {
         set(modifier.apply(get()));
     }
 
-    Publisher<T> getPublisher();
+    Publisher<T> publisher();
 
     default void updateAll(){
-        getPublisher().updateAll(get());
+        publisher().updateAll(get());
     }
 
     default void updateExcept(Consumer<T> source){
-        getPublisher().updateExcept(get(), List.of(source));
+        publisher().updateExcept(get(), List.of(source));
     }
 }

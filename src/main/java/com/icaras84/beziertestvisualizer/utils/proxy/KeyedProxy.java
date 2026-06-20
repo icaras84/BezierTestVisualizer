@@ -32,7 +32,7 @@ public class KeyedProxy<K, T> implements VariableProxy<T>{
     }
 
     @Override
-    public Publisher<T> getPublisher() {
+    public Publisher<T> publisher() {
         return this.publisher;
     }
 
