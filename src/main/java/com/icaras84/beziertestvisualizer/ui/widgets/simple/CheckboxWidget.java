@@ -38,7 +38,7 @@ public class CheckboxWidget extends JPanel implements Widget<Boolean>, Consumer<
 
     @Override
     public VariableProxy<Boolean> proxy() {
-        return null;
+        return this.proxy;
     }
 
     @Override
