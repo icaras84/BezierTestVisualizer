@@ -52,12 +52,13 @@ public class LabelWidget extends JPanel implements Widget<String>, Consumer<Stri
 
         // field initialization
         this.proxy = proxy;
-        this.label = new JLabel(this.proxy.get());
+        this.label = new JLabel();
         this.setTextAlign(TextAlign.CENTER);
         this.setVerticalAlign(VerticalAlign.CENTER);
 
         // set up proxy stuff
         this.proxy.publisher().add(this);
+        this.accept(proxy.get());
 
         // ui
         super.setLayout(new BorderLayout());

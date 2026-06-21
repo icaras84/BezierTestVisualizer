@@ -19,10 +19,10 @@ public class TextboxWidget extends JPanel implements  Widget<String>, Consumer<S
 
         this.formattedTextField = formattedTextField;
         this.proxy = proxy;
-        this.formattedTextField.setValue(this.proxy.get());
         this.formattedTextField.addPropertyChangeListener("value", this::onPropertyChange);
 
         this.proxy.publisher().add(this);
+        this.accept(proxy.get());
 
         super.setLayout(new BorderLayout());
         super.add(this.formattedTextField, BorderLayout.CENTER);
@@ -43,8 +43,8 @@ public class TextboxWidget extends JPanel implements  Widget<String>, Consumer<S
     }
 
     @Override
-    public void accept(String s) {
-        this.formattedTextField.setValue(s);
+    public void accept(String text) {
+        this.formattedTextField.setValue(text);
     }
 
     @Override

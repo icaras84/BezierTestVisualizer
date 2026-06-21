@@ -17,10 +17,10 @@ public class ComboBoxWidget<T> extends JPanel implements Widget<T>, Consumer<T> 
 
         this.comboBox = comboBox;
         this.proxy = proxy;
-        this.comboBox.setSelectedItem(this.proxy.get());
         this.comboBox.addItemListener(this::itemChange);
 
         this.proxy.publisher().add(this);
+        this.accept(proxy.get());
 
         super.setLayout(new BorderLayout());
         super.add(this.comboBox, BorderLayout.CENTER);
@@ -38,8 +38,8 @@ public class ComboBoxWidget<T> extends JPanel implements Widget<T>, Consumer<T> 
     }
 
     @Override
-    public void accept(T t) {
-        this.comboBox.setSelectedItem(t);
+    public void accept(T value) {
+        this.comboBox.setSelectedItem(value);
     }
 
     @Override
