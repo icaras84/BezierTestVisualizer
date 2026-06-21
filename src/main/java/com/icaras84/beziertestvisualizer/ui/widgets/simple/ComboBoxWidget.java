@@ -51,4 +51,8 @@ public class ComboBoxWidget<T> extends JPanel implements Widget<T>, Consumer<T> 
     public JComponent getAsComponent() {
         return this;
     }
+
+    public static <T> ComboBoxWidget<T> createArray(T[] options, VariableProxy<T> proxy) {
+        return new ComboBoxWidget<>(new JComboBox<>(options), proxy);
+    }
 }
