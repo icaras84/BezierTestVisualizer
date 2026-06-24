@@ -6,9 +6,8 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import java.awt.*;
 import java.util.Date;
-import java.util.function.Consumer;
 
-public class SpinnerWidget<T extends Comparable<T>> extends JPanel implements Widget<T>, Consumer<T> {
+public class SpinnerWidget<T extends Comparable<T>> extends JPanel implements Widget<T>{
 
     private final JSpinner spinner;
     private final VariableProxy<T> proxy;

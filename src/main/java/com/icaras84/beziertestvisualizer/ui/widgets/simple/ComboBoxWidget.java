@@ -5,9 +5,8 @@ import com.icaras84.beziertestvisualizer.utils.proxy.VariableProxy;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
-import java.util.function.Consumer;
 
-public class ComboBoxWidget<T> extends JPanel implements Widget<T>, Consumer<T> {
+public class ComboBoxWidget<T> extends JPanel implements Widget<T>{
 
     private final JComboBox<T> comboBox;
     private final VariableProxy<T> proxy;

@@ -5,9 +5,8 @@ import com.icaras84.beziertestvisualizer.utils.proxy.VariableProxy;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.function.Consumer;
 
-public class CheckboxWidget extends JPanel implements Widget<Boolean>, Consumer<Boolean> {
+public class CheckboxWidget extends JPanel implements Widget<Boolean> {
 
     private final JCheckBox checkbox;
     private final VariableProxy<Boolean> proxy;

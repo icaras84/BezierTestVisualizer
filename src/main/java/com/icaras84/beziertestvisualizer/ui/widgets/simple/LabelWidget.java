@@ -5,9 +5,8 @@ import com.icaras84.beziertestvisualizer.utils.proxy.VariableProxy;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.function.Consumer;
 
-public class LabelWidget extends JPanel implements Widget<String>, Consumer<String> {
+public class LabelWidget extends JPanel implements Widget<String> {
     public enum TextAlign{
         LEFT(SwingConstants.LEFT),
         CENTER(SwingConstants.CENTER),

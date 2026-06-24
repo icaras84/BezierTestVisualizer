@@ -7,9 +7,8 @@ import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.text.ParseException;
-import java.util.function.Consumer;
 
-public class TextboxWidget extends JPanel implements  Widget<String>, Consumer<String> {
+public class TextboxWidget extends JPanel implements Widget<String>{
 
     private final JFormattedTextField formattedTextField;
     private final VariableProxy<String> proxy;
